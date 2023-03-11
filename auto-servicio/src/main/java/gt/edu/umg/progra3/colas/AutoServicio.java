@@ -2,6 +2,10 @@ package gt.edu.umg.progra3.colas;
 
 public class AutoServicio {
 
+    int head = 0;  // index of front element in queue
+    int tail = 0;  // index of rear element in queue
+    public int size;  // number of elements in queue
+
     private Cola cola;
 
     public AutoServicio(Cola cola) {
@@ -14,7 +18,12 @@ public class AutoServicio {
      * @return
      */
     public String ingresarAuto(String placa){
-        //Ingresar codigo aqui
+        if (size == queue.length) {
+            throw new IllegalStateException("Cannot add to full queue");
+        }
+        queue[tail] = placa;
+        tail = (tail + 1) % queue.length;
+        size++;
         return null;
     }
 
