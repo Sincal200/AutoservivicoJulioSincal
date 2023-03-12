@@ -2,47 +2,49 @@ package gt.edu.umg.progra3.colas;
 
 public class AutoServicio {
 
-    int head = 0;  // index of front element in queue
-    int tail = 0;  // index of rear element in queue
-    public int size;  // number of elements in queue
-
+    public Node head;
+    public Node tail;
+    public int size;
     private Cola cola;
 
     public AutoServicio(Cola cola) {
         this.cola = cola;
     }
 
-    /**
-     * debe retornar el auto que esta en turno, sin sacarlo de la cola
-     * @param placa
-     * @return
-     */
     public String ingresarAuto(String placa){
-        if (size == queue.length) {
-            throw new IllegalStateException("Cannot add to full queue");
+        Node newNode = new Node(placa);
+
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
         }
-        queue[tail] = placa;
-        tail = (tail + 1) % queue.length;
         size++;
-        return null;
+        return newNode.value;
     }
 
     public String proximoAuto(){
-        //ingresar codigo aqui
-        return null;
+        if (head == null) {
+            return null;
+        }
+        return head.value;
     }
 
-    /**
-     * debe retornar el auto a entregar y sacarlo de la cola
-     * @return
-     */
     public String entregarAuto(){
-        //ingresar codigo aqui
-        return null;
+        if (head == null) {
+            return null;
+        }
+
+        String placa = head.value;
+        head = head.next;
+        size--;
+
+        return placa;
     }
 
     public int obtenerAutosEnCola(){
-        //ingresar codigo aqui
-        return 0;
+        return size;
     }
 }

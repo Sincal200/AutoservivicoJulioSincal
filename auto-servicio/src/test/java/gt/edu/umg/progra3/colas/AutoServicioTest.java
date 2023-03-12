@@ -9,8 +9,6 @@ public class AutoServicioTest {
 
     @Before
     public void init(){
-        //reemplazar por la implementacion de la cola desarrollada
-        //cola = new ColaImpl();
         autoServicio = new AutoServicio(cola);
         autoServicio.ingresarAuto("ABC123");
         autoServicio.ingresarAuto("CDE456");

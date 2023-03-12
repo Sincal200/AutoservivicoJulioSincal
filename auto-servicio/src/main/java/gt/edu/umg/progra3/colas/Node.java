@@ -1,12 +1,11 @@
 package gt.edu.umg.progra3.colas;
 
 public class Node {
-    Object item;
-
+    String value;
     Node next;
 
-    public Node(Object item, Node next) {
-        this.item = item;
-        this.next = next;
+    Node(String value) {
+        this.value = value;
+        this.next = null;
     }
 }

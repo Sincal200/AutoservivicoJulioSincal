@@ -3,32 +3,51 @@ package gt.edu.umg.progra3.colas;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ColaTest {
+import java.util.LinkedList;
 
-    private Cola cola;
+public class ColaTest implements Cola {
+
+    public LinkedList<String> cola;
 
     @Before
-    public void init(){
-        //Reemplazar por la implementacion desarrollada
-        //luego, quitar comentario
-        //cola = new ColaImpl();
+    public void init() {
+        cola = new LinkedList<String>();
+        cola.add("Bienvenidos");
+        cola.add("a");
+        cola.add("Programacion 3");
+    }
 
-        cola.enqueue("Bienvenidos");
-        cola.enqueue("a");
-        cola.enqueue("Programacion 3");
+    public void enqueue(String item) {
+        cola.add(item);
+    }
+
+    public String deque() {
+        return cola.remove();
+    }
+
+    public String peek() {
+        return cola.peek();
+    }
+
+    public int size() {
+        return cola.size();
+    }
+
+    public boolean isEmpty() {
+        return cola.isEmpty();
     }
 
     @Test
     public void testPushCola(){
-        cola.enqueue("testPushPila");
-        String cima = cola.peek();
+        enqueue("testPushPila");
+        String cima = peek();
         assert(cima.equals("Bienvenidos"));
     }
 
     @Test
     public void testPopCola(){
-        String cima1 = cola.deque();
-        String cima2 = cola.peek();
+        String cima1 = deque();
+        String cima2 = peek();
         assert(cima1.equals("Bienvenidos"));
         assert(cima2.equals("a"));
 
@@ -36,10 +55,10 @@ public class ColaTest {
 
     @Test
     public void testSizeCola(){
-        int t1 = cola.size();
-        cola.deque();
-        cola.deque();
-        int t2 = cola.size();
+        int t1 = size();
+        deque();
+        deque();
+        int t2 = size();
         assert (t1==3);
         assert (t2==1);
 
